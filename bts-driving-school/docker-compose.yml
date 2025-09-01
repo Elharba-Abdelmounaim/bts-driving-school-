@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: abdelmounaim
+      POSTGRES_PASSWORD: ELHARBA123
+      POSTGRES_DB: bts_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: abdelmounaim.elharba123@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: ELHARBA123
+    ports:
+      - "8080:80" 
+volumes:
+  postgres_data:
