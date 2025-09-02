@@ -3,28 +3,26 @@
 A modern web application designed to help driving schools manage lessons, students, and cars. The app provides a smooth interface for both instructors and learners to schedule, track, and manage driving lessons.
 
 ### 📌 Features
+- 📝 Student Management – Add, edit, and monitor student progress.
 
-- 📝 Student Registration – Easily add and manage students.
+- 👨‍🏫 Instructor Management – Assign lessons and track performance.
 
-- 🚘 Car Management – Keep track of cars used for lessons.
+- 🚗 Vehicle Management – Track cars, motorcycles, and buses.
 
-- 📅 Lesson Scheduling – Book and manage driving lessons.
+- 💳 Wallet – Manage student credits for lessons.
 
-- 👨‍🏫 Instructor Panel – Manage lessons and monitor students.
+- 📊 Progress Tracking – Monitor student learning and lesson completion.
 
-- 📊 Progress Tracking – Follow student learning progress.
+- 🌐 Admin Panel – Manage all entities with Django Admin.
 
-- 🌐 Responsive Design – Works on desktop and mobile devices.
 
 ### 🛠️ Technologies Used
 
-- Frontend: React / Next.js
+- Backend: Django + Django REST Framework
 
-- Backend: Node.js / Express
+- Database: PostgreSQL
 
-- Database: SQLite / PostgreSQL (depending on setup)
-
-- Styling: TailwindCSS / ShadCN UI
+- Authentication: JWT (planned)
 
 - Deployment: Docker (optional)
 
@@ -36,17 +34,31 @@ git clone https://github.com/your-username/driving-school-app.git
 cd driving-school-app
 
 ```
-Install dependencies:
+Set up virtual environment and install dependencies:
 ```
-npm install
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 
 ```
-Run the development server:
+Apply migrations:
 ```
-npm run dev
+python manage.py makemigrations
+python manage.py migrate
+```
 
+Create superuser to access Admin:
 ```
+
+python manage.py createsuperuser
+```
+
+Run development server:
+```
+python manage.py runserver
+```
+
 Open in browser:
 ```
-http://localhost:3000
+http://127.0.0.1:8000/admin/
 ```
