@@ -1,4 +1,8 @@
-from django.http import HttpResponse
+# core/views.py
+from rest_framework import viewsets
+from .models import Student
+from .serializers import StudentSerializer
 
-def home(request):
-    return HttpResponse("مرحبا بكم في نظام إدارة مراكز السياقة!")
+class StudentViewSet(viewsets.ModelViewSet):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
