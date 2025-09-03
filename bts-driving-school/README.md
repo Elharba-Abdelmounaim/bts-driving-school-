@@ -30,3 +30,11 @@ python manage.py migrate
 
 python manage.py runserver
 
+
+
+---------------------------
+sudo systemctl status postgresql
+
+sudo systemctl start postgresql
+
+
