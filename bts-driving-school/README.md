@@ -36,5 +36,6 @@ python manage.py runserver
 sudo systemctl status postgresql
 
 sudo systemctl start postgresql
+----------------------------
 
-
+http://127.0.0.1:8000/api/token
