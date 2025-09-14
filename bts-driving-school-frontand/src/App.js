@@ -1,15 +1,23 @@
-// src/App.js
 import React, { useState } from "react";
 import Login from "./pages/Login";
-import Students from "./pages/Students";
+import StudentDashboard from "./dashboard/StudentDashboard";
+import InstructorDashboard from "./dashboard/InstructorDashboard";
+import AdminDashboard from "./dashboard/AdminDashboard";
 
 function App() {
-  const [token, setToken] = useState("");
+  const [role, setRole] = useState(localStorage.getItem("role") || null);
+
+  const handleLogin = () => {
+    setRole(localStorage.getItem("role"));
+  };
+
+  if (!role) return <Login onLogin={handleLogin} />;
 
   return (
     <div>
-      <Login />
-      <Students />
+      {role === "student" && <StudentDashboard setRole={setRole} />}
+      {role === "instructor" && <InstructorDashboard setRole={setRole} />}
+      {role === "admin" && <AdminDashboard setRole={setRole} />}
     </div>
   );
 }

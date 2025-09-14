@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/shared/navbar.css' %}">
+  <link rel="stylesheet" href="{% static 'css/Student/dashboard.css' %}">
+
+  <!-- JS -->
+  <script src="{% static 'js/Student/student_dashboard.js' %}"></script>
+  <script src="{% static 'js/Student/profile.js' %}"></script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  {% include "shared/navbar.html" %}
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>🚘 Welcome, <span id="studentName">{{ user.username }}</span></h1>
+      <p>Manage your lessons, exams, and progress in one place.</p>
+      <a href="{% url 'profile' %}" class="btn-primary">View Profile</a>
+    </div>
+  </section>
+
+  <!-- Quick Stats -->
+  <section class="stats-section">
+    <h2>📊 Your Stats</h2>
+    <div class="stats">
+      <div class="card">📚 Lessons <span id="lessonsCount">3</span></div>
+      <div class="card">📝 Exams <span id="examsCount">1</span></div>
+      <div class="card">💰 Wallet <span id="walletBalance">200 MAD</span></div>
+      <div class="card">✅ Status <span id="status">Active</span></div>
+    </div>
+  </section>
+
+  <!-- Upcoming Lessons -->
+  <section class="upcoming-section">
+    <h2>📅 Upcoming Lessons</h2>
+    <div class="upcoming-grid">
+      <div class="lesson-card">
+        <p><strong>Monday – 10:00</strong></p>
+        <small>Instructor: Ahmed – Car A</small>
+        <button class="btn-secondary">View Details</button>
+      </div>
+      <div class="lesson-card">
+        <p><strong>Wednesday – 14:00</strong></p>
+        <small>Instructor: Sara – Car B</small>
+        <button class="btn-secondary">View Details</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Learning Materials -->
+  <section class="materials">
+    <h2>📚 Learning Materials</h2>
+    <div class="materials-grid">
+      <div class="material-card">
+        <p>📖 Traffic Signs (PDF)</p>
+        <button class="btn-secondary">Open</button>
+      </div>
+      <div class="material-card">
+        <p>🎥 Driving Basics (Video)</p>
+        <button class="btn-secondary">Watch</button>
+      </div>
+      <div class="material-card">
+        <p>🧩 Quiz: Road Safety</p>
+        <button class="btn-secondary">Start</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Exams Section -->
+  <section class="exams">
+    <h2>📝 Exams</h2>
+    <p>Next Exam: <strong>Saturday – Theory</strong></p>
+    <a href="#" class="btn-primary">Take a Practice Exam</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Driving School. All rights reserved.</p>
+    <nav>
+      <a href="#">About</a> | <a href="#">Contact</a> | <a href="#">Terms</a>
+    </nav>
+  </footer>
+
+</body>
+</html>

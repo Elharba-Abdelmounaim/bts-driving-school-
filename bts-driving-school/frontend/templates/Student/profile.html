@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Profile</title>
+  <link rel="stylesheet" href="{% static 'css/shared/navbar.css' %}">
+  <link rel="stylesheet" href="{% static 'css/Student/profile.css' %}">
+</head>
+<body>
+
+  {% include "shared/navbar.html" %}
+
+  <!-- Hero Header -->
+  <section class="profile-hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <img src="{% static 'images/3.jpg' %}" alt="Avatar" class="avatar">
+      <h1>{{ user.username }}</h1>
+      <p>{{ user.profile.city }}, {{ user.profile.country }}</p>
+    </div>
+  </section>
+
+  <!-- Stats / Progress Section -->
+  <section class="profile-stats">
+    <div class="stat-card">
+      <h3>Lessons Completed</h3>
+      <p>12/20</p>
+    </div>
+    <div class="stat-card">
+      <h3>Exams Taken</h3>
+      <p>5/7</p>
+    </div>
+    <div class="stat-card">
+      <h3>Profile Completion</h3>
+      <p>75%</p>
+    </div>
+  </section>
+
+  <!-- Personal Info Section -->
+  <section class="profile-info">
+    <div class="info-card">
+      <h3>About Me</h3>
+      <p>{{ user.profile.about }}</p>
+    </div>
+    <div class="info-card">
+      <h3>Contact Info</h3>
+      <p>Phone: {{ user.profile.phone }}</p>
+      <p>Email: {{ user.email }}</p>
+    </div>
+    <div class="info-card">
+      <h3>License Category</h3>
+      <p>{{ user.profile.license_category }}</p>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% load static %}
+{% include "shared/navbar.html" %}
+<link rel="stylesheet" href="{% static 'css/Student/wallet.css' %}">
+<section class="wallet-hero">
+  <h2>محفظتي المالية</h2>
+  <p>تحكم في دفعاتك ومتابعة الرصيد المتبقي بسهولة</p>
+</section>
+
+<section class="wallet-summary">
+  <div class="summary-card">
+    <h3>المجموع المستحق</h3>
+    <p id="total_due">2400 درهم</p>
+  </div>
+  <div class="summary-card">
+    <h3>المبلغ المدفوع</h3>
+    <p id="paid_amount">1600 درهم</p>
+  </div>
+  <div class="summary-card">
+    <h3>المتبقي للدفع</h3>
+    <p id="remaining_balance">800 درهم</p>
+  </div>
+  <div class="summary-card">
+    <h3>عدد الدفعات</h3>
+    <p id="payments_count">3 دفعات</p>
+  </div>
+</section>
+
+<section class="wallet-progress">
+  <h3>نسبة الدفع</h3>
+  <div class="progress-container">
+    <div class="progress-bar" style="width: 60%;"></div>
+  </div>
+</section>
+
+<section class="wallet-actions">
+  <button class="btn-pay">ادفع الآن بالبطاقة</button>
+</section>

@@ -1,0 +1,13 @@
+/* css/shared/global.css */
+* {
+  box-sizing: border-box;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.alert {
+  margin-bottom: 20px;
+}

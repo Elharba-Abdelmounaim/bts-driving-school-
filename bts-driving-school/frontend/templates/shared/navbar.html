@@ -1,0 +1,14 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/shared/navbar.css' %}">
+
+<nav class="navbar">
+  <div class="logo">🚗 Driving School</div>
+  <ul class="nav-links">
+      <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+      <li><a href="{% url 'profile' %}">Profile</a></li>
+      <li><a href="{% url 'wallet' %}">Wallet</a></li>
+      <li><a href="{% url 'lessons' %}">Lessons</a></li>
+      <li><a href="{% url 'exams' %}">Exams</a></li>
+      <li><a href="{% url 'logout' %}">Logout</a></li>
+  </ul>
+</nav>

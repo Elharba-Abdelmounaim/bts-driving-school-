@@ -1,0 +1,80 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d6efd; /* أزرق */
+  padding: 15px 40px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Logo */
+.navbar .logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Hover underline animation */
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: -4px;
+  background: #ffc107; /* أصفر */
+  transition: width 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #ffc107;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+/* Active link */
+.nav-links li a.active {
+  color: #ffc107;
+}
+
+/* Logout button */
+.logout {
+  background: #fff;
+  color: #0d6efd !important;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.logout:hover {
+  background: #ffc107;
+  color: #fff !important;
+}

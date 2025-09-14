@@ -28,22 +28,27 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = "core.User"
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
 
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'rest_framework',
+    'frontend',
     'core',
-    'corsheaders',
     'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',  
@@ -66,7 +71,7 @@ ROOT_URLCONF = 'dts.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "frontend/templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -90,7 +95,7 @@ DATABASES = {
         'NAME': 'bts_db',
         'USER': 'abdelmounaim',
         'PASSWORD': 'ELHARBA123',
-        'HOST': 'localhost',
+        'HOST': '127.0.0.1',
         'PORT': 5432,
     }
 }
@@ -115,10 +120,30 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+    'http://localhost:8080',
+    'http://127.0.0.1:8080',
+    'http://localhost:8081', 
+    'http://127.0.0.1:8081',
+    'http://0.0.0.0:8081',  
+    'http://0.0.0.0:8080',  
 ]
 
+# port : 3000 react || port : 5500 Html
 
+CORS_ALLOW_ALL_ORIGINS = True
+
+# settings.py
+
+
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS', 
+    'PATCH',
+    'POST',
+    'PUT',
+]
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 

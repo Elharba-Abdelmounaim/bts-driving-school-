@@ -2,6 +2,7 @@ version: "3.9"
 services:
   db:
     image: postgres:15
+    container_name: bts-driving-school-db
     environment:
       POSTGRES_USER: abdelmounaim
       POSTGRES_PASSWORD: ELHARBA123
@@ -10,13 +11,24 @@ services:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    networks:
+      - bts-network
 
   pgadmin:
     image: dpage/pgadmin4
+    container_name: bts-driving-school-pgadmin
     environment:
       PGADMIN_DEFAULT_EMAIL: abdelmounaim.elharba123@gmail.com
       PGADMIN_DEFAULT_PASSWORD: ELHARBA123
     ports:
-      - "8080:80" 
+      - "8081:80" 
+    networks:
+      - bts-network
+    depends_on:
+      - db
 volumes:
   postgres_data:
+
+networks:
+  bts-network:
+    driver: bridge
