@@ -1,10 +1,16 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Dashboard</title>
+  <title>لوحة الطالب</title>
+
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-straight/css/uicons-solid-straight.css'>
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+  
 
   <!-- CSS -->
   <link rel="stylesheet" href="{% static 'css/shared/navbar.css' %}">
@@ -14,79 +20,166 @@
   <script src="{% static 'js/Student/student_dashboard.js' %}"></script>
   <script src="{% static 'js/Student/profile.js' %}"></script>
 </head>
-<body>
+<body dir="rtl">
 
   <!-- Navbar -->
   {% include "shared/navbar.html" %}
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-content">
-      <h1>🚘 Welcome, <span id="studentName">{{ user.username }}</span></h1>
-      <p>Manage your lessons, exams, and progress in one place.</p>
-      <a href="{% url 'profile' %}" class="btn-primary">View Profile</a>
+    <div class="hero-overlay">
+        <img src="" alt="" class="hero_logo">
+      <div class="hero-content">
+      
+        <h1>تعلم القيادة مع <span>أكاديمية الحياة</span></h1>
+        <p>
+          مركز تعليم القيادة الرائد مع أفضل المدربين المعتمدين وأحدث السيارات المجهزة
+          لضمان تعليم آمن وفعال
+        </p>
+        <div class="hero-buttons">
+          <a href="#" class="btn btn-outline">تواصل معنا</a>
+          <a href="#" class="btn btn-primary">سجل الآن</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Quick Stats -->
-  <section class="stats-section">
-    <h2>📊 Your Stats</h2>
-    <div class="stats">
-      <div class="card">📚 Lessons <span id="lessonsCount">3</span></div>
-      <div class="card">📝 Exams <span id="examsCount">1</span></div>
-      <div class="card">💰 Wallet <span id="walletBalance">200 MAD</span></div>
-      <div class="card">✅ Status <span id="status">Active</span></div>
-    </div>
+
+    <section class="stats">
+          <div class="container">
+            <div class="stat">
+              <h2>24/7</h2>
+              <p>دعم العملاء</p>
+            </div>
+           
+            <div class="stat">
+              <h2>+15</h2>
+              <p>سنة خبرة</p>
+            </div>
+             <div class="stat">
+              <h2>95%</h2>
+              <p>نسبة النجاح</p>
+            </div>
+             <div class="stat">
+              <h2>+5000</h2>
+              <p>طالب متخرج</p>
+            </div>
+          </div>
+      </section>
+
+
+  <!-- About / Info -->
+  <section class="info-section bg-light py-10">
+    <div class="section-header">
+            <h2 class="section-title">لماذا تختار أكاديمية الحياة؟</h2>
+            <p class="section-subtitle">
+                نحن نقدم أفضل خدمات تعليم القيادة مع ضمان الجودة والأمان
+            </p>
+        </div>
+        
+        <div class="features-container">
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon"><i class="fi fi-rr-car"></i></div>
+                    <h3>تدريب احترافي</h3>
+                    <p>مدربون معتمدون وسيارات حديثة مجهزة بأحدث أنظمة الأمان</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon"><i class="fi fi-ss-users-alt"></i></div>
+                    <h3>دعم شخصي</h3>
+                    <p>متابعة فردية لكل طالب وبرامج تدريبية مخصصة</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon"><i class="fi fi-br-talent-alt"></i></div>
+                    <h3>نسبة نجاح عالية</h3>
+                    <p><span class="highlight">95% من طلابنا</span> ينجحون من المرة الأولى</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon"><i class="fi fi-rr-clock-five"></i></div>
+                    <h3>مرونة في المواعيد</h3>
+                    <p>جدولة مرنة تناسب جميع أوقاتكم</p>
+                </div>
+            </div>
+        </div>
   </section>
 
   <!-- Upcoming Lessons -->
-  <section class="upcoming-section">
-    <h2>📅 Upcoming Lessons</h2>
+  <section class="upcoming-section container my-10">
+    <h2>📅 حصصك القادمة</h2>
     <div class="upcoming-grid">
+      {% for lesson in upcoming_lessons %}
       <div class="lesson-card">
-        <p><strong>Monday – 10:00</strong></p>
-        <small>Instructor: Ahmed – Car A</small>
-        <button class="btn-secondary">View Details</button>
+        <p><strong>{{ lesson.date }} – {{ lesson.time }}</strong></p>
+        <small>المدرب: {{ lesson.trainer }} – سيارة {{ lesson.car }}</small>
+        <button class="btn-secondary">التفاصيل</button>
       </div>
-      <div class="lesson-card">
-        <p><strong>Wednesday – 14:00</strong></p>
-        <small>Instructor: Sara – Car B</small>
-        <button class="btn-secondary">View Details</button>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services bg-light py-10">
+    <div class="container">
+      <h2>🎯 خدماتنا</h2>
+      <div class="grid">
+        <div class="service-card">
+         <img src="{% static 'images/service1.jpeg' %}" alt=""><br>
+        التشوير الطرقي
+        </div>
+        <div class="service-card">
+         <img src="{% static 'images/service03.png' %}" alt=""><br>
+        حصص تدريبية تطبيقية</div>
+        <div class="service-card">
+           <img src="{% static 'images/image1.jpeg' %}" alt=""><br>
+          مدونة السير المغربية</div>
+        <div class="service-card">
+          <img src="{% static 'images/image2.png' %}" alt=""><br>
+         حصص خاصة للنساء</div>
       </div>
     </div>
   </section>
 
   <!-- Learning Materials -->
-  <section class="materials">
-    <h2>📚 Learning Materials</h2>
+  <section class="materials container my-10">
+    <h2>📚 مواد تعليمية</h2>
     <div class="materials-grid">
+      {% for material in materials %}
       <div class="material-card">
-        <p>📖 Traffic Signs (PDF)</p>
-        <button class="btn-secondary">Open</button>
+        <p>{{ material.icon }} {{ material.title }}</p>
+        <button class="btn-secondary">{{ material.action }}</button>
       </div>
-      <div class="material-card">
-        <p>🎥 Driving Basics (Video)</p>
-        <button class="btn-secondary">Watch</button>
-      </div>
-      <div class="material-card">
-        <p>🧩 Quiz: Road Safety</p>
-        <button class="btn-secondary">Start</button>
-      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- News Section -->
+  <section class="news bg-light py-10">
+    <div class="container">
+      <h2>📰 آخر المستجدات</h2>
+      {% for item in news %}
+      <article class="news-item">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+      </article>
+      {% endfor %}
     </div>
   </section>
 
   <!-- Exams Section -->
-  <section class="exams">
-    <h2>📝 Exams</h2>
-    <p>Next Exam: <strong>Saturday – Theory</strong></p>
-    <a href="#" class="btn-primary">Take a Practice Exam</a>
+  <section class="exams container my-10">
+    <h2>📝 الامتحانات</h2>
+    <p>الامتحان القادم: <strong>{{ next_exam }}</strong></p>
+    <a href="#" class="btn-primary">اجراء امتحان تجريبي</a>
   </section>
 
   <!-- Footer -->
-  <footer>
-    <p>© 2025 Driving School. All rights reserved.</p>
+  <footer class="bg-dark text-white text-center py-6">
+    <p>© 2025 مدرسة تعليم السياقة. جميع الحقوق محفوظة.</p>
     <nav>
-      <a href="#">About</a> | <a href="#">Contact</a> | <a href="#">Terms</a>
+      <a href="#">حول</a> | <a href="#">اتصل بنا</a> | <a href="#">الشروط</a>
     </nav>
   </footer>
 

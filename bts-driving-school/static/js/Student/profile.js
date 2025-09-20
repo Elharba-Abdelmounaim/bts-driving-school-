@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const licenseInput = document.getElementById('license_category');
 
     try {
-        const response = await window.makeAuthenticatedRequest(`${window.API_BASE_URL}/api/students/me/`);
+        const response = await window.makeAuthenticatedRequest(`${window.API_BASE_URL}/api/students/ABDELMOUNAIM/`);
         if (!response || !response.ok) throw new Error('Failed to load profile');
 
         const data = await response.json();

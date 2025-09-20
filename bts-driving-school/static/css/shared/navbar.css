@@ -1,33 +1,44 @@
-/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Tajawal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Navbar container */
+body {
+  background-color: #f8f9fa;
+}
+
+
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #0d6efd; /* أزرق */
-  padding: 15px 40px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+
+      background-color: #004aad; 
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px;
+    }
+
+
+.navbar .logo  {
+  height: 100px;  
+  width: auto;
+  display: block;
+  padding-bottom: 0;
+}
+img{
+  padding-bottom: 20px;
+  max-width: 190px;
+  height:150px;
+
 }
 
-/* Logo */
-.navbar .logo {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #fff;
-}
 
-/* Links */
 .nav-links {
   list-style: none;
   display: flex;
   gap: 25px;
+  align-items: center;
 }
 
 .nav-links li a {
@@ -37,17 +48,18 @@
   font-weight: 500;
   position: relative;
   transition: color 0.3s ease;
+  padding-bottom: 4px;
 }
 
-/* Hover underline animation */
+
 .nav-links li a::after {
   content: "";
   position: absolute;
   width: 0;
   height: 2px;
   left: 0;
-  bottom: -4px;
-  background: #ffc107; /* أصفر */
+  bottom: -2px;
+  background: #ffc107;
   transition: width 0.3s ease;
 }
 
@@ -59,15 +71,15 @@
   width: 100%;
 }
 
-/* Active link */
+
 .nav-links li a.active {
   color: #ffc107;
 }
 
-/* Logout button */
+
 .logout {
   background: #fff;
-  color: #0d6efd !important;
+  color: #2575fc !important;
   padding: 6px 14px;
   border-radius: 20px;
   font-weight: bold;
@@ -78,3 +90,18 @@
   background: #ffc107;
   color: #fff !important;
 }
+
+
+ @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+        margin-top: 10px;
+      }
+    }
