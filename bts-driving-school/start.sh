@@ -1,12 +1,16 @@
 #!/bin/bash
 
+sudo systemctl stop postgresql
 
 echo "Activating virtual environment..."
 source venv/bin/activate
 
 
 echo "Starting Docker containers..."
+
+docker compose down
 docker compose up -d
+
 
 
 echo "Checking container status..."

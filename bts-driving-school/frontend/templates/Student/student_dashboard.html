@@ -10,6 +10,8 @@
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-straight/css/uicons-solid-straight.css'>
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+  <link rel="stylesheet" href="https://fontawesome.com/icons/phone?s=solid">
+  
   
 
   <!-- CSS -->
@@ -31,7 +33,7 @@
         <img src="" alt="" class="hero_logo">
       <div class="hero-content">
       
-        <h1>تعلم القيادة مع <span>أكاديمية الحياة</span></h1>
+        <h1>تعلم القيادة مع <span>أكاديميتنا </span></h1>
         <p>
           مركز تعليم القيادة الرائد مع أفضل المدربين المعتمدين وأحدث السيارات المجهزة
           لضمان تعليم آمن وفعال
@@ -71,7 +73,7 @@
   <!-- About / Info -->
   <section class="info-section bg-light py-10">
     <div class="section-header">
-            <h2 class="section-title">لماذا تختار أكاديمية الحياة؟</h2>
+            <h2 class="section-title">لماذا تختار أكاديميتنا</h2>
             <p class="section-subtitle">
                 نحن نقدم أفضل خدمات تعليم القيادة مع ضمان الجودة والأمان
             </p>
@@ -106,81 +108,96 @@
         </div>
   </section>
 
-  <!-- Upcoming Lessons -->
-  <section class="upcoming-section container my-10">
-    <h2>📅 حصصك القادمة</h2>
-    <div class="upcoming-grid">
-      {% for lesson in upcoming_lessons %}
-      <div class="lesson-card">
-        <p><strong>{{ lesson.date }} – {{ lesson.time }}</strong></p>
-        <small>المدرب: {{ lesson.trainer }} – سيارة {{ lesson.car }}</small>
-        <button class="btn-secondary">التفاصيل</button>
-      </div>
-      {% endfor %}
+  <section class="testimonials bg-light py-10">
+    <div class="testimonials_header">
+      <h1 class="testimonials_title">ماذا يقول طلابنا؟</h1>
+      <p class="testimonials_subtitle">آراء حقيقية من طلاب تخرجوا من أكاديمينا</p>
     </div>
-  </section>
 
-  <!-- Services Section -->
-  <section class="services bg-light py-10">
-    <div class="container">
-      <h2>🎯 خدماتنا</h2>
-      <div class="grid">
-        <div class="service-card">
-         <img src="{% static 'images/service1.jpeg' %}" alt=""><br>
-        التشوير الطرقي
+    <div class="testimonials_list">
+        <div class="testimonials_card">
+          <div class="testimonial_card_rating">
+              <i class="fi fi-ss-star"></i>
+              <i class="fi fi-ss-star"></i>
+              <i class="fi fi-ss-star"></i>
+              <i class="fi fi-ss-star"></i>
+              <i class="fi fi-ss-star"></i>
+          </div>        
+            <p class="testimonial_card_text">"  أفضل مركز تعليم قيادة في المدينة. تعاملهم راقي جداً "</p>
+            <span class="testimonial_card_author">شرف جليت</span>
         </div>
-        <div class="service-card">
-         <img src="{% static 'images/service03.png' %}" alt=""><br>
-        حصص تدريبية تطبيقية</div>
-        <div class="service-card">
-           <img src="{% static 'images/image1.jpeg' %}" alt=""><br>
-          مدونة السير المغربية</div>
-        <div class="service-card">
-          <img src="{% static 'images/image2.png' %}" alt=""><br>
-         حصص خاصة للنساء</div>
+
+
+        <div class="testimonials_card">
+            <div class="testimonial_card_rating">
+              <i class="fi fi-ss-star"></i>
+              <i class="fi fi-ss-star"></i>
+              <i class="fi fi-ss-star"></i>
+              <i class="fi fi-ss-star"></i>
+              <i class="fi fi-ss-star"></i>
+            </div>
+            <p class="testimonial_card_text">" خدمة ممتازة ومتابعة مستمرة. أنصح الجميع بهذا المركز "</p>
+            <span class="testimonial_card_author">محمد ابن بيضة</span>
+        </div>
+
+
+        <div class="testimonials_card">
+            <div class="testimonial_card_rating">
+              <i class="fi fi-ss-star"></i>
+              <i class="fi fi-ss-star"></i>
+              <i class="fi fi-ss-star"></i>
+              <i class="fi fi-ss-star"></i>
+              <i class="fi fi-ss-star"></i>
+            </div>
+            <p class="testimonial_card_text">"تجربة رائعة! المدربون محترفون والسيارات ممتازة. نجحت من المرة الأولى. "</p>
+            <span class="testimonial_card_author">سالم امليحة</span>
+        </div>
+    </div>
+
+  </section>
+
+  <section class="con">
+      <div >
+        <h1 class="con-n1">إبدأ رحلتك في تعلم القيادة اليوم</h1>
+        
+        <p class="description">
+            لتصم إلى أذن الطلاب الذين حتفظا عليهم من الحصول على رخصة القيادة.
+        </p>
+        
+        <a href="#" class="cta-button">احصل على استشارة مجانية</a>
+        
+        <p class="contact">اكتشف دوراتنا </p>
       </div>
-    </div>
   </section>
 
-  <!-- Learning Materials -->
-  <section class="materials container my-10">
-    <h2>📚 مواد تعليمية</h2>
-    <div class="materials-grid">
-      {% for material in materials %}
-      <div class="material-card">
-        <p>{{ material.icon }} {{ material.title }}</p>
-        <button class="btn-secondary">{{ material.action }}</button>
-      </div>
-      {% endfor %}
-    </div>
-  </section>
-
-  <!-- News Section -->
-  <section class="news bg-light py-10">
-    <div class="container">
-      <h2>📰 آخر المستجدات</h2>
-      {% for item in news %}
-      <article class="news-item">
-        <h3>{{ item.title }}</h3>
-        <p>{{ item.description }}</p>
-      </article>
-      {% endfor %}
-    </div>
-  </section>
-
-  <!-- Exams Section -->
-  <section class="exams container my-10">
-    <h2>📝 الامتحانات</h2>
-    <p>الامتحان القادم: <strong>{{ next_exam }}</strong></p>
-    <a href="#" class="btn-primary">اجراء امتحان تجريبي</a>
-  </section>
 
   <!-- Footer -->
   <footer class="bg-dark text-white text-center py-6">
-    <p>© 2025 مدرسة تعليم السياقة. جميع الحقوق محفوظة.</p>
-    <nav>
-      <a href="#">حول</a> | <a href="#">اتصل بنا</a> | <a href="#">الشروط</a>
-    </nav>
+
+<section class="contact-section">
+      <div class="contact-item">
+
+        <div class="text">
+          <h4>اتصل بنا</h4>
+          <p><i class="fa-solid fa-phone"></i>96 70 87 61 06 </p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+          <div class="text">
+            <h4>راسلنا</h4>
+            <p> <a class="link" href="autoecoledakhla@gmail.com"><i class="fa-solid fa-envelope"></i>autoecoledakhla@gmail.com</a></p>
+
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="text">
+            <h4>موقعنا</h4>
+            <p > <i class="fa-solid fa-location-dot"></i> حي الغفران - الداخلة </p>
+          </div>
+        </div>
+    </section>
   </footer>
 
 </body>

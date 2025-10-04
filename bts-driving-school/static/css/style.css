@@ -1,0 +1,241 @@
+/* style.css */
+
+/* Reset وتنسيقات عامة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.login-container {
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    padding: 48px 40px;
+    width: 100%;
+    max-width: 440px;
+    position: relative;
+}
+
+/* الهيدر */
+.login-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.welcome-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+.welcome-subtitle {
+    font-size: 14px;
+    color: #666;
+    font-weight: 400;
+}
+
+/* قسم التسجيل عبر وسائل التواصل */
+.social-section {
+    margin-bottom: 32px;
+}
+
+.section-title {
+    font-size: 12px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.social-btn {
+    width: 44px;
+    height: 44px;
+    border: 2px solid #f0f0f0;
+    border-radius: 12px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    color: #666;
+}
+
+.social-btn:hover {
+    border-color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+/* قسم التسجيل اليدوي */
+.manual-section {
+    margin-bottom: 24px;
+}
+
+.manual-title {
+    font-size: 12px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-input {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #f0f0f0;
+    border-radius: 12px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    background: #fafafa;
+    font-weight: 500;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-input::placeholder {
+    color: #999;
+    font-weight: 400;
+}
+
+.password-label {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 6px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* زر التسجيل */
+.login-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-top: 8px;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+/* قسم الأسفل */
+.login-footer {
+    text-align: center;
+    margin-top: 24px;
+}
+
+.footer-text {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.signup-link {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.signup-link:hover {
+    color: #764ba2;
+}
+
+.contact-link {
+    font-size: 13px;
+    color: #999;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+    color: #667eea;
+}
+
+/* تأثيرات الحركة */
+.login-container {
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* تنسيقات للشاشات الصغيرة */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 40px 24px;
+        margin: 10px;
+        border-radius: 20px;
+    }
+    
+    .welcome-title {
+        font-size: 24px;
+    }
+    
+    .social-buttons {
+        gap: 12px;
+    }
+    
+    .social-btn {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* أيقونات وسائل التواصل (يمكن استبدالها بأيقونات حقيقية) */
+.social-btn::before {
+    content: attr(data-platform);
+    font-size: 14px;
+}

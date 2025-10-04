@@ -1,2 +1,521 @@
 {% load static %}
 {% include "shared/navbar.html" %}
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مركز تدريب القيادة - دورات متنوعة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* الترويسة */
+        header {
+            background: linear-gradient(135deg, #1a6bb3, #0d4d8c);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* قسم الإحصائيات */
+        .stats {
+            background-color: #fff;
+            padding: 50px 0;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            flex: 1;
+            min-width: 200px;
+            font-size: 2.5rem;
+            color: #1a6bb3;
+            margin-bottom: 15px;
+            background-color: #c4d2e0;
+            margin: 20px;
+            border-radius: 20px;
+        }
+
+        .stat-number1 { color: #1a6bb3; }
+        .stat-number2 { color: #b12e2e; }
+        .stat-number3 { color: #1db91d; }
+        .stat-number4 { color: #781db9; }
+
+        .stat-number1, .stat-number2, .stat-number3, .stat-number4 {
+            font-size: 2.2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-text {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* قسم الدورات */
+        .courses {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1a6bb3;
+            font-size: 2rem;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 35px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .card h3 {
+            color: #1a6bb3;
+            margin: 15px 0 10px;
+            font-size: 1.4rem;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+        }
+
+        .card .features {
+            text-align: right;
+            margin: 15px 0;
+        }
+
+        .card .features li {
+            list-style: none;
+            font-size: 0.9em;
+            margin: 6px 0;
+            color: #444;
+        }
+
+        .card .features li:before {
+            content: "✔";
+            color: #28a745;
+            margin-left: 8px;
+        }
+
+        .card .price {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #1a6bb3;
+            margin: 20px 0;
+        }
+
+        .card .price del {
+            color: #999;
+            font-size: 0.9em;
+            margin-right: 8px;
+        }
+
+        .card button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #1a6bb3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .card button:hover {
+            background-color: #0d4d8c;
+        }
+
+        /* الفوتر */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 { margin-bottom: 20px; color: #1a6bb3; }
+        .footer-section p { margin-bottom: 10px; }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-left: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover { color: #1a6bb3; }
+
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+
+
+
+
+        /* قسم الخدمات الإضافية */
+.extra-services {
+    background-color: #fff;
+    padding: 60px 0;
+    margin-top: 40px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.service-card {
+    background: #f9f9f9;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+}
+
+.service-card i {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.service-card p {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.service-card .price, 
+.service-card .discount {
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: block;
+    margin-top: 10px;
+}
+
+.service-card.blue { background-color: #eaf3ff; color: #1a6bb3; }
+.service-card.green { background-color: #e8f9f1; color: #1db91d; }
+.service-card.orange { background-color: #fff3e5; color: #ff6600; }
+
+/* بانر المساعدة */
+.help-banner {
+    background: linear-gradient(135deg, #1a6bb3, #0d4d8c);
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px;
+    border-radius: 10px;
+    margin: 50px 0;
+}
+
+.help-banner h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.help-banner p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn {
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.btn.primary {
+    background: #fff;
+    color: #1a6bb3;
+    font-weight: bold;
+}
+
+.btn.primary:hover {
+    background: #ddd;
+}
+
+.btn.secondary {
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.btn.secondary:hover {
+    background: #fff;
+    color: #1a6bb3;
+}
+
+
+        @media (max-width: 768px) {
+            .courses-grid { grid-template-columns: 1fr; }
+            .footer-content { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الترويسة -->
+    <header>
+        <div class="container">
+            <h1>دوراتنا التدريبية</h1>
+            <p>اختر الدورة التي تناسبك واحصل على أفضل تدريب من مدربين معتمدين</p>
+        </div>
+    </header>
+
+    <!-- قسم الإحصائيات -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-item"><span class="stat-number1">4</span><span class="stat-text">دورات متنوعة</span></div>
+                <div class="stat-item"><span class="stat-number2">100+</span><span class="stat-text">ساعات تدريب</span></div>
+                <div class="stat-item"><span class="stat-number3">95%</span><span class="stat-text">نسبة النجاح</span></div>
+                <div class="stat-item"><span class="stat-number4">24/7</span><span class="stat-text">دعم مستمر</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الدورات -->
+    <section class="courses">
+        <div class="container">
+            <h2 class="section-title">الدورات المتاحة</h2>
+            <div class="courses-grid">
+                
+                <div class="card">
+                    <img src="../../../static/images/BAS.jpeg" alt="قيادة السيارات">
+                    <h3>قيادة السيارات أوتوماتيك</h3>
+                    <p>تعليم قيادة السيارات بأفضل الطرق وأحدث التقنيات</p>
+                    <ul class="features">
+                        <li>تدريب عملي</li>
+                        <li>سيارات حديثة</li>
+                        <li>مدرب معتمد</li>
+                    </ul>
+                    <div class="price">
+                        <del>3,000 درهم</del>
+                        <span>2,500 درهم</span>
+                    </div>
+                    <button>اشترِ الآن</button>
+                </div>
+
+                <div class="card">
+                    <img src="../../../static/images/BAS.jpeg" alt="قيادة السيارات">
+                    <h3>قيادة السيارات يدوي</h3>
+                    <p>تعلم السياقة بالناقل اليدوي مع تدريب مكثف</p>
+                    <ul class="features">
+                        <li>دروس نظرية</li>
+                        <li>تطبيق عملي</li>
+                        <li>متابعة فردية</li>
+                    </ul>
+                    <div class="price">
+                        <del>2,800 درهم</del>
+                        <span>2,300 درهم</span>
+                    </div>
+                    <button>اشترِ الآن</button>
+                </div>
+
+                <div class="card">
+                    <img src="../../../static/images/BAS.jpeg" alt="تدريب خاص">
+                    <h3>دورة تعليم المركبات الثقيلة</h3>
+                    <p>دورة تخصصية لتعليم قيادة الشاحنات والمركبات الثقيلة مع التركيز على الأمان والمهارات المهنية</p>
+                    <ul class="features">
+                        <li>مدرب شخصي</li>
+                        <li>وقت مرن</li>
+                        <li>تدريب مكثف</li>
+                    </ul>
+                    <div class="price">
+                        <del>3,500 درهم</del>
+                        <span>3,000 درهم</span>
+                    </div>
+                    <button>اشترِ الآن</button>
+                </div>
+
+                <div class="card">
+                    <img src="../../../static/images/BAS.jpeg" alt="امتحان السياقة">
+                    <h3>دورة تعليم قيادة الدراجات النارية</h3>
+                    <p>دورة متخصصة لتعليم قيادة الدراجات النارية بأمان مع التركيز على التوازن والسيطرة</p>
+                    <ul class="features">
+                        <li>اختبارات تجريبية</li>
+                        <li>توجيه فردي</li>
+                        <li>محاكاة للامتحان</li>
+                    </ul>
+                    <div class="price">
+                        <del>2,200 درهم</del>
+                        <span>1,800 درهم</span>
+                    </div>
+                    <button>اشترِ الآن</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+        <!-- قسم الخدمات الإضافية -->
+    <section class="extra-services">
+        <div class="container">
+            <h2 class="section-title">خدمات إضافية</h2>
+            <div class="services-grid">
+                <div class="service-card blue">
+                    <i class="fas fa-clock"></i>
+                    <h3>دروس تقوية</h3>
+                    <p>ساعات إضافية لمن يحتاج تدريب إضافي</p>
+                    <span class="price">150 درهم/ساعة</span>
+                </div>
+
+                <div class="service-card green">
+                    <i class="fas fa-id-card"></i>
+                    <h3>دورة القيادة الوقائية</h3>
+                    <p>تطوير مهارات القيادة الآمنة</p>
+                    <span class="price">800 درهم</span>
+                </div>
+
+                <div class="service-card orange">
+                    <i class="fas fa-users"></i>
+                    <h3>دورات جماعية</h3>
+                    <p>خصومات للمجموعات والعائلات</p>
+                    <span class="discount">خصم 20%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بانر المساعدة -->
+    <section class="help-banner">
+        <div class="container">
+            <h2>هل تحتاج مساعدة في اختيار الدورة المناسبة؟</h2>
+            <p>تواصل معنا للحصول على استشارة مجانية</p>
+            <div class="btn-group">
+                <a href="#" class="btn primary">تسجيل الدخول</a>
+                <a href="#" class="btn secondary">تواصل معنا</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن المركز</h3>
+                    <p>نقدم أفضل الدورات التدريبية لتعليم القيادة بمختلف أنواعها.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>اتصل بنا</h3>
+                    <p>الهاتف: 0123456789</p>
+                    <p>البريد: info@drivingschool.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>سوشيال ميديا</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 مركز تدريب القيادة - جميع الحقوق محفوظة
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

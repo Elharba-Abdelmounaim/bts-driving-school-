@@ -45,7 +45,7 @@
 }
 
 .hero-content h1 span {
-  color: #ffd700; /* لون مميز */
+  color: #ffd700;
 }
 
 .hero-content p {
@@ -55,7 +55,7 @@
   color: #f1f1f1;
 }
 
-/* أزرار */
+
 .hero-buttons {
   margin-top: 25px;
   display: flex;
@@ -98,7 +98,7 @@
 
 
 .stats {
-  background-color: #f9f9f9; /* لون الخلفية */
+  background-color: #f9f9f9; 
   padding: 60px 10px;
   text-align: center;
 }
@@ -285,40 +285,144 @@
              color: #2ecc71;
             font-weight: 700;
         }
+
+        .testimonials {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 4rem 2rem;
+          background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+          border-radius: 10px;
+        }
+
+        .testimonials_header{
+          text-align: center;
+          margin-bottom: 20px;
+        }
+
+        .testimonials_title{
+          font-size: 4rem;
+          margin-bottom: 12px;
+          color: #1e3c72;
+          position: relative;
+        }
+
         
+        .testimonials_subtitle{
+          font-size: 2rem;
+          color: #666;;
         
-        @media (max-width: 992px) {
-            .features-grid {
-                gap: 2rem;
-            }
+          margin-bottom: 0 auto;
+          text-align: center;
+        }
+
+        .testimonials_list{
+          display:grid ;
+          grid-template-columns:repeat(auto-fit,minmax(300px,1fr)) ;
+          gap: 30px;
+        }
+
+        .testimonials_card{
+          background: white;
+          padding: 30px;
+          border-radius: 10px;
+          text-align: center;
+          transition: all 0.3s ease;
+        }
+
+        .testimonials_card:hover{
+          transform: translateY(-10px);
+          box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        .testimonial_card_rating i{
+          font-size: 2rem;
+            color: #FFD700;
+        }
+
+        .testimonial_card_text{
+          color: #666;
+          font-size: 20px;
+        }
+
+        .testimonial_card_author{
+          color: #555;
+          font-size: 22px;
+
+        }
+
+
+        .con{
+          background-color: rgb(18, 102, 220);
+          padding: 40px;
+          color: #f0f0f0;
+          display: flex;
+          justify-content: center;
+          text-align: center;
+          text-align: center;
+        }
+
+        .con-n1{
+          color: #f0f0f0;
+          font-size: 50px;
+        }
+
+         .contact {
+            background-color: #E2FF21;
+            color: rgb(6, 11, 42);
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
         }
         
-        @media (max-width: 768px) {
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 1.8rem;
-            }
-            
-            .section-title {
-                font-size: 2.2rem;
-            }
-            
-            .section-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .feature {
-                padding: 2rem 1.5rem;
-            }
-            
-            .feature-icon {
-                font-size: 2.5rem;
-                height: 80px;
-                width: 80px;
-                line-height: 80px;
-            }
-            
-            .feature h3 {
-                font-size: 1.5rem;
-            }
-          }
+        .contact:hover {
+            background-color: #e6c200;
+        }
+        
+        .cta-button {
+            color: rgb(6, 11, 42);
+            border: white solid 1px;
+            padding: 15px 30px;
+            font-size: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #f6f6f6;
+        }
+        
+
+      .contact-section {
+        background-color: #0d1324;   
+        display: flex;
+        font-size: 20px;
+        justify-content: space-around; 
+        align-items: center;          
+        padding: 30px 20px;
+
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 10px; 
+        color: #fff;
+        max-width: 250px;
+        text-align: right;
+      }
+
+      .link{
+        color:#e9ecef;
+      }
+       
+
+        
+

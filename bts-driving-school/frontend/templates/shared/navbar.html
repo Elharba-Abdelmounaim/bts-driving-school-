@@ -2,12 +2,21 @@
 <link rel="stylesheet" href="{% static 'css/shared/navbar.css' %}">
 
 <nav class="navbar">
-  <div class="logo"><a href="{% url 'dashboard' %}"><img src="{% static 'images/logo_lhya.svg' %}" alt="logo"></a></div>
+  <div class="logo">
+    <a href="{% url 'dashboard' %}">
+      <img src="{% static 'images/logo_lhya.svg' %}" alt="logo">
+    </a>
+  </div>
   <ul class="nav-links">
       <li><a href="{% url 'dashboard' %}">الرئيسية</a></li>
-      <li><a href="{% url 'profile' %}">الدورات</a></li>
-      <li><a href="{% url 'wallet' %}">لوحة الطالب</a></li>
+      <li><a href="{% url 'profile' %}">لوحة الطالب</a></li>
+      <li><a href="{% url 'wallet' %}">الدورات</a></li>
       <li><a href="{% url 'lessons' %}">التواصل</a></li>
-      <li><a href="{% url 'logout' %}" class="logout">تسحيل الدخول</a></li>
+      
+      <!-- إذا بغيتي زر خروج -->
+      <li><a href="{% url 'logout' %}" class="logout">تسجيل الخروج</a></li>
+
+      <!-- وإذا بغيتي زر دخول (بدل logout بـ login) -->
+      <!-- <li><a href="{% url 'login' %}" class="login">تسجيل الدخول</a></li> -->
   </ul>
 </nav>
