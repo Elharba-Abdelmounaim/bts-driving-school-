@@ -100,26 +100,33 @@
 .stats {
   background-color: #f9f9f9; 
   padding: 60px 10px;
+  display: flex;
   text-align: center;
+  justify-content: center;
 }
 
 .stats .container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   gap: 140px; 
 }
 
+.stats .stat {
+  align-items: center;
+}
+
 .stats .stat h2 {
-  font-size: 4rem;
+  font-size: 6rem;
   color: #004aad; 
   margin-bottom: 10px;
 }
 
 .stats .stat p {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   color: #555; 
-  margin: 0;
+ 
 }
 
 
@@ -404,9 +411,10 @@
         background-color: #0d1324;   
         display: flex;
         font-size: 20px;
+      
         justify-content: space-around; 
         align-items: center;          
-        padding: 30px 20px;
+        padding: 70px 70px;
 
       }
 
@@ -422,6 +430,46 @@
       .link{
         color:#e9ecef;
       }
+
+
+       footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 40px 0;
+            margin-top: 50px;
+            padding-right: 90px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 { margin-bottom: 20px; color: #1a6bb3; }
+        .footer-section p { margin-bottom: 10px; }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-left: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover { color: #1a6bb3; }
+
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
        
 
         

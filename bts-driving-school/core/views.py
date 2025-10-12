@@ -22,13 +22,18 @@ class StudentViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['get'], url_path='me')
     def get_my_profile(self, request):
-        student = Student.objects.get(user=request.user)
+        student = Student.objects.filter(user=request.user).first()
+        if not student:
+            return Response({"detail": "لم يتم العثور على ملف الطالب لهذا المستخدم"}, status=404)
         serializer = self.get_serializer(student)
+
         return Response(serializer.data)
 
     @action(detail=False, methods=['patch'], url_path='update-me')
     def update_my_profile(self, request):
         student = Student.objects.get(user=request.user)
+         if not student:
+            return Response({"detail": "لم يتم العثور على ملف الطالب  لتحديثه"}, status=404)
         serializer = self.get_serializer(student, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
         serializer.save()

@@ -1,59 +1,129 @@
 {% load static %}
+ {% include "shared/navbar.html" %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Profile</title>
-  <link rel="stylesheet" href="{% static 'css/shared/navbar.css' %}">
-  <link rel="stylesheet" href="{% static 'css/Student/profile.css' %}">
+  <title>لوحة الطالب</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-50">
 
-  {% include "shared/navbar.html" %}
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
-  <!-- Hero Header -->
-  <section class="profile-hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <img src="{% static 'images/3.jpg' %}" alt="Avatar" class="avatar">
-      <h1>{{ user.username }}</h1>
-      <p>{{ user.profile.city }}, {{ user.profile.country }}</p>
+    <!-- Header -->
+    <div class="bg-yellow-500 rounded-lg shadow-md p-6 mb-8 flex flex-col md:flex-row md:items-center md:justify-between">
+      <div class="flex items-center space-x-4 space-x-reverse mb-4 md:mb-0">
+        <img src="instructor-photo.jpg" alt="أحمد محمد السعيد" class="h-16 w-16 rounded-full object-cover">
+        <div>
+          <h1 class="text-2xl font-bold text-gray-900">{{ student.user.username }}</h1>
+          <p class="text-gray-600">رقم الطالب: {{student.national_id }}</p>
+          <p class="text-sm text-blue-600">دورة تعليم القيادة - </p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-3 space-x-reverse">
+        <button class="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100">🔔</button>
+        <button class="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100">⚙️</button>
+        <button class="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100">🚪</button>
+      </div>
     </div>
-  </section>
 
-  <!-- Stats / Progress Section -->
-  <section class="profile-stats">
-    <div class="stat-card">
-      <h3>Lessons Completed</h3>
-      <p>12/20</p>
+    <!-- Navigation Tabs -->
+    <div class="bg-white rounded-lg shadow-md mb-8 border-b border-gray-200">
+      <nav class="flex space-x-8 space-x-reverse px-6">
+        <button class="flex items-center space-x-2 space-x-reverse py-4 px-1 border-b-2 border-blue-500 text-blue-600 font-medium text-sm">
+          📈 <span>نظرة عامة</span>
+        </button>
+        <button class="flex items-center space-x-2 space-x-reverse py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 font-medium text-sm">
+          💳 <span>المدفوعات</span>
+        </button>
+        <button class="flex items-center space-x-2 space-x-reverse py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 font-medium text-sm">
+          📚 <span>الدروس</span>
+        </button>
+        <button class="flex items-center space-x-2 space-x-reverse py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 font-medium text-sm">
+          👤 <span>الملف الشخصي</span>
+        </button>
+      </nav>
     </div>
-    <div class="stat-card">
-      <h3>Exams Taken</h3>
-      <p>5/7</p>
-    </div>
-    <div class="stat-card">
-      <h3>Profile Completion</h3>
-      <p>75%</p>
-    </div>
-  </section>
 
-  <!-- Personal Info Section -->
-  <section class="profile-info">
-    <div class="info-card">
-      <h3>About Me</h3>
-      <p>{{ user.profile.about }}</p>
+    <!-- Overview Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div class="bg-white p-6 rounded-lg shadow-md flex items-center">
+        <div class="p-2 bg-blue-100 rounded-lg">📊</div>
+        <div class="mr-3">
+          <p class="text-sm text-gray-600">تقدم الدروس</p>
+          <p class="text-2xl font-bold text-gray-900"></p>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md flex items-center">
+        <div class="p-2 bg-green-100 rounded-lg">💰</div>
+        <div class="mr-3">
+          <p class="text-sm text-gray-600">المبلغ المدفوع</p>
+          <p class="text-2xl font-bold text-gray-900">1,500 درهم</p>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md flex items-center">
+        <div class="p-2 bg-orange-100 rounded-lg">⏳</div>
+        <div class="mr-3">
+          <p class="text-sm text-gray-600">المبلغ المتبقي</p>
+          <p class="text-2xl font-bold text-gray-900">1,000 درهم</p>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md flex items-center">
+        <div class="p-2 bg-purple-100 rounded-lg">🏆</div>
+        <div class="mr-3">
+          <p class="text-sm text-gray-600">نسبة الإنجاز</p>
+          <p class="text-2xl font-bold text-gray-900">60%</p>
+        </div>
+      </div>
     </div>
-    <div class="info-card">
-      <h3>Contact Info</h3>
-      <p>Phone: {{ user.profile.phone }}</p>
-      <p>Email: {{ user.email }}</p>
+
+    <!-- Progress Bar -->
+    <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">تقدم التدريب</h3>
+      <div class="space-y-2">
+        <div class="flex justify-between text-sm text-gray-600">
+          <span>الدروس المكتملة</span>
+          <span>12 من 20</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3">
+          <div class="bg-gradient-to-r from-blue-500 to-blue-600 h-3 rounded-full" style="width: 60%;"></div>
+        </div>
+      </div>
     </div>
-    <div class="info-card">
-      <h3>License Category</h3>
-      <p>{{ user.profile.license_category }}</p>
+
+    <!-- Next Lesson -->
+    <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 rounded-lg shadow-md mb-8">
+      <h3 class="text-lg font-semibold mb-4">الدرس القادم</h3>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="flex items-center space-x-2 space-x-reverse">📅 <span>2024-02-10</span></div>
+        <div class="flex items-center space-x-2 space-x-reverse">⏰ <span>10:00 صباحاً</span></div>
+        <div class="flex items-center space-x-2 space-x-reverse">👨‍🏫 <span>المدرب خالد أحمد</span></div>
+      </div>
     </div>
-  </section>
+
+    <!-- Payment Status -->
+    <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">حالة المدفوعات</h3>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <div class="text-sm text-gray-600 mb-2">إجمالي المبلغ</div>
+          <div class="text-2xl font-bold text-gray-900 mb-4">2,500 درهم</div>
+          <div class="space-y-2">
+            <div class="flex justify-between text-sm text-green-600">✓ مدفوع <span>1,500 درهم</span></div>
+            <div class="flex justify-between text-sm text-orange-600">⏳ متبقي <span>1,000 درهم</span></div>
+          </div>
+        </div>
+        <div class="flex flex-col justify-center">
+          <button class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+            ادفع الآن (1,000 درهم)
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
 
 </body>
 </html>

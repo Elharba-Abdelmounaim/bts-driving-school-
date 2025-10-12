@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-header">
+      <h1 class="welcome-title">Create Account</h1>
+      <p class="welcome-subtitle">Join our driving school today 🚗</p>
+    </div>
+
+    <form method="post" enctype="multipart/form-data" class="login-form">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <input type="text" name="username" placeholder="Username" required class="form-input">
+      </div>
+
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Email address" required class="form-input">
+      </div>
+
+      <div class="form-group">
+        <input type="password" name="password" placeholder="Password" required class="form-input">
+      </div>
+
+      <div class="form-group">
+        <input type="text" name="national_id" placeholder="National ID" required class="form-input">
+      </div>
+
+      <div class="form-group">
+        <input type="text" name="phone" placeholder="Phone Number" required class="form-input">
+      </div>
+
+      <div class="form-group">
+        <select name="license_category" required class="form-input">
+          <option value="">Select License Type</option>
+          <option value="AM">AM</option>
+          <option value="A1">A1</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+        </select>
+      </div>
+
+      <button type="submit" class="login-btn">Register</button>
+    </form>
+
+    <div class="login-footer">
+      <p class="footer-text">Already have an account? <a href="{% url 'login' %}" class="signup-link">Sign in</a></p>
+    </div>
+
+    {% if error %}
+      <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+  </div>
+</body>
+</html>
