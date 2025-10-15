@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from datetime import date, time
 
 # Create your models here.
 
@@ -103,3 +104,39 @@ class Wallet(models.Model):
 
     def __str__(self):
         return f"{self.student.user.username} - {self.credits_balance} حصص"
+
+class Lesson(models.Model):
+    STATUS_CHOICES = [
+        ('upcoming', 'قادم'),
+        ('completed', 'مكتمل'),
+        ('canceled', 'ملغى'),
+    ]
+
+    TYPE_CHOICES = [
+        ('theory', 'نظري'),
+        ('practice', 'عملي'),
+    ]
+
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name="lessons")
+    instructor = models.ForeignKey(Instructor, on_delete=models.SET_NULL, null=True, blank=True)
+    vehicle = models.ForeignKey(Vehicle, on_delete=models.SET_NULL, null=True, blank=True)
+
+
+    title = models.CharField(max_length=100)
+    lesson_type = models.CharField(max_length=10, choices=TYPE_CHOICES, default='theory')
+    date = models.DateField(default=date.today)
+    time = models.TimeField(default="10:00")
+    duration = models.IntegerField(default=60, help_text="المدة بالدقائق")
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='upcoming')
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.title} ({self.student.user.username})"
+
+
+
+
+
+
+
+

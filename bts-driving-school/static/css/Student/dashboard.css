@@ -374,8 +374,9 @@
         }
 
          .contact {
-            background-color: #E2FF21;
-            color: rgb(6, 11, 42);
+            background: #ffd700;
+            color: #004aad;
+            border: 2px solid #ffd700;
             border: none;
             padding: 15px 30px;
             font-size: 18px;
@@ -387,9 +388,10 @@
         }
         
         .contact:hover {
-            background-color: #e6c200;
-        }
-        
+            background: #e6c200;
+            border-color: #e6c200;
+          }
+                
         .cta-button {
             color: rgb(6, 11, 42);
             border: white solid 1px;

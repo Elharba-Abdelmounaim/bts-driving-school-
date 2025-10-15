@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
-from core.models import Student, Wallet
+from datetime import date, timedelta
+from core.models import Student, Wallet , Lesson , Instructor, Vehicle
 
 
 # صفحة تسجيل الدخول
@@ -42,6 +43,24 @@ def register_view(request):
         # إنشاء محفظة افتراضية للطالب
         Wallet.objects.create(student=student, credits_balance=22)
 
+        instructors = Instructor.objects.filter(active=True)
+        instructor = instructor.first() if instructors.exists() else None
+        lessons_data = [
+            {"title": "الدرس النظري الأول", "lesson_type": "theory", "date": date.today() + timedelta(days=1), "time": "09:00"},
+            {"title": "الدرس العملي الأول", "lesson_type": "practice", "date": date.today() + timedelta(days=3), "time": "10:00"},
+            {"title": "الدرس النظري الثاني", "lesson_type": "theory", "date": date.today() + timedelta(days=5), "time": "14:00"},
+        ]
+        for i in lessons_data:
+            Lesson.objects.create(
+                student=student,
+                instructor=instructor,
+                title =i['title'],
+                lesson_type=i['lesson_type'],
+                date=i["date"],
+                time=i["time"],
+                status='upcoming'
+            )
+ 
         # توجيهه إلى صفحة تسجيل الدخول بعد التسجيل
         return redirect('login')
 
@@ -52,11 +71,30 @@ def register_view(request):
 def dashboard(request):
     student = Student.objects.get(user=request.user)
     wallet = Wallet.objects.get(student=student)
+    lessons = Lesson.objects.filter(student=student)
 
+    completed_lesson = lessons.filter(status='completed').count()
+    total_lessons = lessons.count()
+    progress = (completed_lesson / total_lessons * 100) if total_lessons else 0
 
-  
+    amount_paid = wallet.credits_balance 
+    total_amount = 2500 
+    amount_remaining = total_amount - amount_paid
 
-    return render(request, "Student/student_dashboard.html")
+    next_lesson = lessons.filter(status='upcoming').order_by('date', 'time').first()
+
+    context = {
+    "student": student,
+    "wallet": wallet,
+    "lessons": lessons,
+    "total_lessons": total_lessons,
+    "completed_lessons": completed_lesson,
+    "progress": progress,
+    "amount_paid": amount_paid,
+    "amount_remaining": amount_remaining,
+    "next_lesson": next_lesson,
+    }
+    return render(request, "Student/student_dashboard.html", context)
 
 # صفحة البروفايل
 @login_required(login_url='login')

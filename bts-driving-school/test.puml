@@ -1,0 +1,106 @@
+@startuml
+
+' ==========================
+' Enums / Choices
+' ==========================
+class ROLE_CHOICES {
+    admin
+    instructor
+    student
+}
+
+class LICENSE_CHOICES {
+    AM
+    A1
+    A
+    B
+    C
+    D
+    EB
+    EC
+    ED
+}
+
+class VEHICLE_TYPES {
+    car
+    moto
+    truck
+    bus
+}
+
+class VEHICLE_STATUS {
+    available
+    in_use
+    maintenance
+}
+
+class LESSON_STATUS {
+    upcoming
+    completed
+    canceled
+}
+
+class LESSON_TYPE {
+    theory
+    practice
+}
+
+' ==========================
+' Models
+' ==========================
+class User {
+    +role : String
+    +phone : String
+    +center_id : Integer
+}
+
+class Student {
+    +national_id : String
+    +license_category : String
+    +enrollment_date : String
+    +avatar : String
+}
+
+class Instructor {
+    +active : Boolean
+}
+
+class LicenseCategory {
+    +code : String
+    +name : String
+}
+
+class Vehicle {
+    +plate_on : String
+    +type : String
+    +category : String
+    +status : String
+}
+
+class Wallet {
+    +credits_balance : Integer
+    +last_update : String
+}
+
+class Lesson {
+    +title : String
+    +lesson_type : String
+    +date : String
+    +time : String
+    +duration : Integer
+    +status : String
+    +updated_at : String
+}
+
+' ==========================
+' Relations
+' ==========================
+Student --> User : OneToOne
+Instructor --> User : OneToOne
+Instructor --> LicenseCategory : ManyToMany
+Wallet --> Student : OneToOne
+Lesson --> Student : ManyToOne
+Lesson --> Instructor : ManyToOne
+Lesson --> Vehicle : ManyToOne
+
+@enduml

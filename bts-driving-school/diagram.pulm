@@ -1,0 +1,106 @@
+@startuml
+
+' ==========================
+' Enums / Choices
+' ==========================
+enum ROLE_CHOICES {
+  admin
+  instructor
+  student
+}
+
+enum LICENSE_CHOICES {
+  AM
+  A1
+  A
+  B
+  C
+  D
+  EB
+  EC
+  ED
+}
+
+enum VEHICLE_TYPES {
+  car
+  moto
+  truck
+  bus
+}
+
+enum VEHICLE_STATUS {
+  available
+  in_use
+  maintenance
+}
+
+enum LESSON_STATUS {
+  upcoming
+  completed
+  canceled
+}
+
+enum LESSON_TYPE {
+  theory
+  practice
+}
+
+' ==========================
+' Models
+' ==========================
+class User {
+  +role : ROLE_CHOICES
+  +phone : String
+  +center_id : Integer
+}
+
+class Student {
+  +national_id : String
+  +license_category : LICENSE_CHOICES
+  +enrollment_date : Date
+  +avatar : String
+}
+
+class Instructor {
+  +active : Boolean
+}
+
+class LicenseCategory {
+  +code : String
+  +name : String
+}
+
+class Vehicle {
+  +plate_on : String
+  +type : VEHICLE_TYPES
+  +category : LICENSE_CHOICES
+  +status : VEHICLE_STATUS
+}
+
+class Wallet {
+  +credits_balance : Integer
+  +last_update : Date
+}
+
+class Lesson {
+  +title : String
+  +lesson_type : LESSON_TYPE
+  +date : Date
+  +time : Time
+  +duration : Integer
+  +status : LESSON_STATUS
+  +updated_at : Date
+}
+
+' ==========================
+' Relations
+' ==========================
+User "1" <-- "1" Student : OneToOne
+User "1" <-- "1" Instructor : OneToOne
+Instructor "*" --> "*" LicenseCategory : ManyToMany
+Student "1" --> "1" Wallet : OneToOne
+Student "1" <-- "*" Lesson : ManyToOne
+Instructor "1" <-- "*" Lesson : ManyToOne
+Vehicle "1" <-- "*" Lesson : ManyToOne
+
+@enduml
