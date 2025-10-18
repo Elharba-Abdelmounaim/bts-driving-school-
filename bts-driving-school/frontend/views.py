@@ -6,7 +6,7 @@ from datetime import date, timedelta
 from core.models import Student, Wallet , Lesson , Instructor, Vehicle
 
 
-# صفحة تسجيل الدخول
+
 def login_view(request):
     if request.method == "POST":
         username = request.POST['username']
@@ -30,17 +30,17 @@ def register_view(request):
         phone = request.POST['phone']
         license_category = request.POST['license_category']
 
-        # تحقق من وجود المستخدم مسبقًا
+        
         if User.objects.filter(username=username).exists():
             return render(request, "Register.html", {"error": "Username already exists"})
 
-        # إنشاء المستخدم
+        
         user = User.objects.create_user(username=username, email=email, password=password, phone=phone, role="student")
 
-        # إنشاء الطالب المرتبط بالمستخدم
+        
         student = Student.objects.create(user=user, national_id=national_id, license_category=license_category)
 
-        # إنشاء محفظة افتراضية للطالب
+        
         Wallet.objects.create(student=student, credits_balance=22)
 
         instructors = Instructor.objects.filter(active=True)
@@ -61,12 +61,12 @@ def register_view(request):
                 status='upcoming'
             )
  
-        # توجيهه إلى صفحة تسجيل الدخول بعد التسجيل
+      
         return redirect('login')
 
     return render(request, "Register.html")
 
-# صفحة الداشبورد (لازم تسجيل الدخول)
+
 @login_required(login_url='login')
 def dashboard(request):
     student = Student.objects.get(user=request.user)
@@ -96,7 +96,7 @@ def dashboard(request):
     }
     return render(request, "Student/student_dashboard.html", context)
 
-# صفحة البروفايل
+
 @login_required(login_url='login')
 def profile(request):
     student = Student.objects.get(user=request.user)
@@ -107,7 +107,7 @@ def profile(request):
     }
     return render(request, "Student/profile.html", context)
 
-# صفحات أخرى
+
 @login_required(login_url='login')
 def wallet(request):
     return render(request, "Student/wallet.html")
@@ -121,7 +121,7 @@ def exams(request):
     return render(request, "Student/exams.html")
 
 
-# تسجيل الخروج
+
 def logout_view(request):
     logout(request)
     return redirect('login')

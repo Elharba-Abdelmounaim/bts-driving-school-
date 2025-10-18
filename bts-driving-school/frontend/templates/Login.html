@@ -10,24 +10,23 @@
 </head>
 <body>
   <div class="login-container">
-    <!-- الهيدر -->
+ 
     <div class="login-header">
       <h1 class="welcome-title">Welcome back!</h1>
       <p class="welcome-subtitle">Private entire your details.</p>
     </div>
 
-    <!-- وسائل التواصل الاجتماعي -->
+
     <div class="social-section">
       <div class="section-title">Social sign in options</div>
       <div class="social-buttons">
         <button class="social-btn" data-platform="G"><i class="fab fa-google"></i></button>
         <button class="social-btn" data-platform="f"><i class="fab fa-facebook-f"></i></button>
-        <button class="social-btn" data-platform="X"><i class="fab fa-twitter"></i></button>
-        <button class="social-btn" data-platform="in"><i class="fab fa-linkedin-in"></i></button>
+       
       </div>
     </div>
 
-    <!-- التسجيل اليدوي -->
+  
     <div class="manual-section">
       <div class="section-title manual-title">Manual sign in</div>
       <form method="post" class="login-form">
@@ -46,15 +45,15 @@
       </form>
     </div>
 
-    <!-- الفوتر -->
+ 
     <div class="login-footer">
       <p class="footer-text">
         Don't have an account? <a href="{% url 'register' %}" class="signup-link">Create an account</a>
       </p>
-      <a href="#" class="contact-link">Navigating to tag in a sign up? Click here to contact us!</a>
+      
     </div>
 
-    <!-- رسائل الخطأ -->
+
     {% if error %}
       <div class="alert alert-danger" style="
         background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
@@ -69,7 +68,7 @@
     {% endif %}
   </div>
 
-  <!-- روابط أيقونات Font Awesome -->
+ 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
 </body>
 </html>

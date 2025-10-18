@@ -1,8 +1,6 @@
 @startuml
 
-' ==========================
-' Enums / Choices
-' ==========================
+
 class ROLE_CHOICES {
     admin
     instructor
@@ -45,9 +43,7 @@ class LESSON_TYPE {
     practice
 }
 
-' ==========================
-' Models
-' ==========================
+
 class User {
     +role : String
     +phone : String
@@ -92,9 +88,7 @@ class Lesson {
     +updated_at : String
 }
 
-' ==========================
-' Relations
-' ==========================
+
 Student --> User : OneToOne
 Instructor --> User : OneToOne
 Instructor --> LicenseCategory : ManyToMany

@@ -18,3 +18,5 @@ class IsAdminOrReadOnly(permissions.BasePermission):
         if request.method in SAFE_METHODS:
             return True  # GET, HEAD, OPTIONS
         return request.user.is_authenticated and getattr(request.user, 'role', None) == 'admin'
+
+#SAFE_METHODS = TUPLE   +=> get ,.. DRF django ..

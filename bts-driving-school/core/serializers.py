@@ -15,6 +15,7 @@ class StudentSerializer(serializers.ModelSerializer):
         fields = ['id', 'user', 'national_id', 'license_category', 'enrollment_date', 'avatar']
 
     def update(self, instance, validated_data):
+        #patch put 
         user_data = validated_data.pop('user', {})
         user = instance.user
         user.username = user_data.get('username', user.username)
