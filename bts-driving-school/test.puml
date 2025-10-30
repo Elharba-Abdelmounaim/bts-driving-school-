@@ -98,3 +98,4 @@ Lesson --> Instructor : ManyToOne
 Lesson --> Vehicle : ManyToOne
 
 @enduml
+
